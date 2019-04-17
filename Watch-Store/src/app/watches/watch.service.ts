@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {IWatch} from "../home/watch/IWatch";
 import {Observable} from "rxjs/index";
@@ -6,6 +6,8 @@ import {Router} from "@angular/router";
 
 const getTopThreeUrl = 'http://localhost:3000/watches/get/best/3';
 const getWatch = 'http://localhost:3000/watches/get';
+const deleteWatchById = 'http://localhost:3000/watches/delete';
+const createWatchUrl = 'http://localhost:3000/watches/create';
 
 @Injectable({
   providedIn: 'root'
@@ -13,21 +15,22 @@ const getWatch = 'http://localhost:3000/watches/get';
 export class WatchService {
 
   constructor(private http: HttpClient,
-              private router: Router) { }
+              private router: Router) {
+  }
 
-  getTopThree () : Observable<IWatch[]> {
+  getTopThree(): Observable<IWatch[]> {
     return this.http.get<IWatch[]>(getTopThreeUrl);
   }
 
-  giveDetails (id) : Observable<IWatch> {
+  giveDetails(id): Observable<IWatch> {
     return this.http.get<IWatch>(getWatch + `/${id}`);
   }
 
-  getAll () : Observable<IWatch[]> {
+  getAll(): Observable<IWatch[]> {
     return this.http.get<IWatch[]>(getWatch + `/all`);
   }
 
-  calculateAllPrice () {
+  calculateAllPrice() {
     let cart = JSON.parse(localStorage.getItem('cart'));
     let allPrice = 0;
     if (cart != null) {
@@ -37,41 +40,44 @@ export class WatchService {
     }
     return allPrice;
   }
-  addWatchToCart(id){
+
+  addWatchToCart(id) {
     this.giveDetails(id)
       .subscribe((data) => {
         data = data['data'];
 
         let cart = JSON.parse(localStorage.getItem('cart'));
-        if (cart == null){
+        if (cart == null) {
           cart = [];
         }
         let ids = cart.map(x => x._id);
-        if (ids.includes(id)){
+        if (ids.includes(id)) {
           return;
         }
         cart.push(data);
         localStorage.setItem('cart', JSON.stringify(cart));
       })
   }
-  addWatchToFavourite(id){
+
+  addWatchToFavourite(id) {
     this.giveDetails(id)
       .subscribe((data) => {
         data = data['data'];
 
         let cart = JSON.parse(localStorage.getItem('favourite'));
-        if (cart == null){
+        if (cart == null) {
           cart = [];
         }
         let ids = cart.map(x => x._id);
-        if (ids.includes(id)){
+        if (ids.includes(id)) {
           return;
         }
         cart.push(data);
         localStorage.setItem('favourite', JSON.stringify(cart));
       })
   }
-  removeWatchFromCart(id){
+
+  removeWatchFromCart(id) {
     let cart = JSON.parse(localStorage.getItem('cart'));
     let result = [];
 
@@ -79,7 +85,8 @@ export class WatchService {
     localStorage.setItem('cart', JSON.stringify(cart));
     this.router.navigate(['shop']);
   }
-  removeWatchFromFavourite(id){
+
+  removeWatchFromFavourite(id) {
     let cart = JSON.parse(localStorage.getItem('favourite'));
     let result = [];
 
@@ -88,7 +95,18 @@ export class WatchService {
     this.router.navigate(['shop']);
   }
 
-  navigateToDetails(id){
+  deleteWatchById(id) {
+    this.http.post(deleteWatchById + `/${id}`, {id})
+      .subscribe((data) => {
+        this.router.navigate(['']);
+      });
+  }
+
+  createWatch(data) {
+    return this.http.post(createWatchUrl, data);
+  }
+
+  navigateToDetails(id) {
     this.router.navigate([`watches/details/${id}`]);
   }
 }

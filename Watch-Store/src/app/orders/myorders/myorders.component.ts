@@ -14,7 +14,8 @@ export class MyordersComponent implements OnInit {
   ngOnInit() {
     this.orderService.getMine()
       .subscribe((data) => {
-        console.log(data);
+        this.orders = data['data'];
+        console.log(this.orders[0].isPending);
       })
   }
 

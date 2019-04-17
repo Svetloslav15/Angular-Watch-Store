@@ -17,7 +17,7 @@
           <a class="nav-link" routerLink="/shop">Shop</a>
         </li>
         <li *ngIf="authService.isAuthenticated()" class="nav-item mx-5">
-          <a class="nav-link" routerLink="/orders/mine/{{localStorage.getItem('userId')}}">My Orders</a>
+          <a class="nav-link" routerLink="/orders/mine/{{authService.getUserId()}}">My Orders</a>
         </li>
         <li *ngIf="authService.isAdmin()" class="nav-item dropdown">
           <div class="nav-link dropdown-toggle cp" id="navbarDropdown"

@@ -12,7 +12,6 @@ import {RegisterComponent} from './authentication/register/register.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {AuthService} from "./authentication/auth.service";
 import {JwtInterceptorService} from "./jwt-interceptor.service";
-import {ResponseHandlerInterceptorService} from "./response-handler-interceptor.service";
 import {ToastrModule} from "ngx-toastr";
 import { WatchComponent } from './home/watch/watch.component';
 import { WatchesAllComponent } from './watches/watches-all/watches-all.component';
@@ -23,6 +22,7 @@ import { FavouriteComponent } from './watches/favourite/favourite.component';
 import { FavouriteWatchComponent } from './watches/favourite/favourite-watch/favourite-watch.component';
 import { MyordersComponent } from './orders/myorders/myorders.component';
 import { OrderCommonComponent } from './orders/order-common/order-common.component';
+import { CreateWatchComponent } from './watches/create-watch/create-watch.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +40,8 @@ import { OrderCommonComponent } from './orders/order-common/order-common.compone
     FavouriteComponent,
     FavouriteWatchComponent,
     MyordersComponent,
-    OrderCommonComponent
+    OrderCommonComponent,
+    CreateWatchComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,54 @@
+<main>
+  <section class="jumbotron text-dark text-center m-4">
+    <h2 class="ml-5">Add Watch</h2>
+    <form  class="ml-5 text-center" #form="ngForm" (ngSubmit)="createWatch()">
+      <div class="form-group col-md-4 m-md-auto demo">
+        <label for="exampleInputUsername">Name:</label>
+        <div class="input-group-prepend">
+          <input type="text"
+                 class="form-control"
+                 required
+                 ngModel
+                 #name="ngModel"
+                 name="name"
+                 id="exampleInputUsername"
+                 placeholder="Name"/>
+        </div>
+        <div *ngIf="name.touched && name.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
+      </div>
+      <div class="form-group col-md-4 mt-2 m-md-auto demo">
+        <label class="mt-3" >Description:</label>
+        <div class="input-group-prepend">
+          <textarea class="form-control"
+                    required
+                    ngModel
+                    #description="ngModel"
+                    name="description"
+                    placeholder="Description"></textarea>
+        </div>
+        <div *ngIf="description.touched && description.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
+      </div>
+      <div class="form-group col-md-4 mt-2 m-md-auto demo">
+        <label class="mt-3" >Image URL:</label>
+        <div class="input-group-prepend">
+          <input type="text"  required
+                 ngModel
+                 #imageUrl="ngModel" class="form-control" name="imageUrl" placeholder="Image URL"/>
+        </div>
+        <div *ngIf="imageUrl.touched && imageUrl.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
+      </div>
+      <div class="form-group col-md-4 mt-2 m-md-auto demo">
+        <label class="mt-3">Price:</label>
+        <div class="input-group-prepend">
+          <input type="number" required
+                 ngModel
+                 #price="ngModel" min="1"  class="form-control" name="price" placeholder="Price"/>
+        </div>
+        <div *ngIf="price.touched && price.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
+      </div>
+      <div class="d-block m-auto">
+        <button type="submit" [disabled]="form.invalid" class="btn btn-outline-info p-md-3 mt-5 text-uppercase h5">Submit</button>
+      </div>
+    </form>
+  </section>
+</main>

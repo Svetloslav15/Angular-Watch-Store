@@ -72,6 +72,7 @@ module.exports = {
     },
     deleteWatch: (req, res) => {
         let id = req.body.id;
+        console.log(req.body);
         Watch.findByIdAndUpdate(id, {
             $set: {isDeleted: true}
         }).then(watch => {

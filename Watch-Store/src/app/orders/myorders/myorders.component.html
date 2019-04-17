@@ -11,11 +11,11 @@
     </div>
     <div class="text-center w-100">
       <app-order-common *ngFor="let order of orders"
-                        productsCount="order.watches.length"
-                        id="order._id"
-                        price="order.price"
-                        isPending="order.isPending"
-                        isArchived="order.isArchived"
+                        productsCount="{{order.watches.length}}"
+                        id="{{order._id}}"
+                        price="{{order.price}}"
+                        isPending="{{order.isPending}}"
+                        isArchived="{{order.isArchived}}"
                         ></app-order-common>
     </div>
   </div>

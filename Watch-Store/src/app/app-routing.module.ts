@@ -9,6 +9,7 @@ import {CartComponent} from "./watches/cart/cart.component";
 import {DetailsWatchComponent} from "./watches/details-watch/details-watch.component";
 import {FavouriteComponent} from "./watches/favourite/favourite.component";
 import {MyordersComponent} from "./orders/myorders/myorders.component";
+import {CreateWatchComponent} from "./watches/create-watch/create-watch.component";
 
 const routes: Routes = [
   {path: '', pathMatch: 'full', component: MainComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'watches/details/:id', component: DetailsWatchComponent},
   {path: 'favourite', component: FavouriteComponent},
   {path: 'orders/mine/:id', component: MyordersComponent},
+  {path: 'administration/watch/add', component: CreateWatchComponent},
 ];
 
 @NgModule({
