@@ -1,0 +1,22 @@
+<main class="container my-2">
+  <div class="table table-hover table-condensed">
+    <div class="w-100">
+      <div class="w-100 row text-center">
+        <div class="col-lg-3">OrderId</div>
+        <div class="col-lg-3">Watches Count</div>
+        <div class="col-lg-2">Price</div>
+        <div class="col-lg-2">Status</div>
+        <div class="col-lg-2">Action</div>
+      </div>
+    </div>
+    <div class="text-center w-100">
+      <app-order-common *ngFor="let order of orders"
+                        productsCount="order.watches.length"
+                        id="order._id"
+                        price="order.price"
+                        isPending="order.isPending"
+                        isArchived="order.isArchived"
+                        ></app-order-common>
+    </div>
+  </div>
+</main>

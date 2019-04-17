@@ -1,0 +1,20 @@
+<div>
+  <div class="card col-lg-12 text-center">
+    <img class="card-img-top card-image mx-auto mt-2"
+         src="{{imageUrl}}">
+    <div class="card-body">
+      <h5 class="card-title">{{name}}</h5>
+    </div>
+    <div class="card-footer text-center">
+      <p class="text-muted">{{price}} ЛВ</p>
+      <div class="row">
+        <button  type="button" routerLink="/watches/get/{{id}}" (click)="watchService.navigateToDetails(id)"class="btn btn-outline-info w-7em float-right btn-sm mx-auto p-2">View</button>
+        <button  type="button" routerLink="/watches/cart/add/{{id}}" (click)="watchService.addWatchToCart(id)" *ngIf="authService.isAuthenticated()" class="btn btn-outline-success w-7em float-right btn-sm mx-auto p-2">Add To Cart</button>
+      </div>
+      <div class="row mt-2">
+        <button  type="button" routerLink="/watches/delete/{{id}}" *ngIf="authService.isAdmin()"class="btn btn-outline-danger w-7em float-right btn-sm mx-auto p-2"><i class="fas fa-trash-alt"></i></button>
+        <button  type="button" routerLink="/watches/edit/{{id}}" *ngIf="authService.isAdmin()"class="btn btn-outline-warning w-7em float-right btn-sm mx-auto p-2"><i class="far fa-edit"></i></button>
+      </div>
+    </div>
+  </div>
+</div>

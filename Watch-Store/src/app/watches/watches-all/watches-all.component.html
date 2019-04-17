@@ -1,0 +1,4 @@
+<main class="card-deck row justify-content-center">
+  <app-watch class="w-25" *ngFor="let watch of watches" name="{{watch.name}}" price="{{watch.price}}"
+             id="{{watch._id}}" imageUrl="{{watch.imageUrl}}"></app-watch>
+</main>

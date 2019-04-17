@@ -1,0 +1,16 @@
+<main class="row text-center mx-auto">
+  <div class="jumbotron w-75 mx-auto mt-3">
+    <h1 class="display-4 text-center mb-3">Welcome to our watch shop!</h1>
+    <p class="my-3 text-center">Here you can find the most unique watches with best prices!</p>
+    <p class="lead row justify-content-center">
+      <a class="btn btn-outline-info btn-lg w-7em" routerLink="/register">Register</a>
+      <a class="btn btn-outline-info btn-lg ml-2 w-7em" routerLink="/shop">Shop</a>
+    </p>
+  </div>
+  <div class="row text-center mx-auto">
+    <h3 class="my-3 text-center col-lg-12">Top 3 Most Liked Watches</h3>
+    <div class="card-deck row justify-content-center">
+      <app-watch class="col-lg-3" *ngFor="let watch of watches" name="{{watch.name}}" price="{{watch.price}}" id="{{watch._id}}" imageUrl="{{watch.imageUrl}}"></app-watch>
+    </div>
+  </div>
+</main>

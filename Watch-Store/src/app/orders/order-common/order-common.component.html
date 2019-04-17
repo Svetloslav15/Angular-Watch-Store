@@ -1,0 +1,18 @@
+<div class="m-3 row mx-auto text-center border border-rounded">
+  <div class="card-body col-lg-3">
+    <h5 class="card-title">{{id}}</h5>
+  </div>
+  <div class="card-body col-lg-3">
+    <h5 class="card-title">{{productsCount}}</h5>
+  </div>
+  <div class="card-body col-lg-2">
+    <h5 class="card-title">{{price}}</h5>
+  </div>
+  <div class="card-body col-lg-2">
+    <h5 *ngIf="isPending" class="card-title btn btn-outline-warning">Pending</h5>
+    <h5 *ngIf="isArchived" class="card-title btn btn-outline-danger">Archived</h5>
+  </div>
+  <div class="card-body col-lg-2">
+    <a routerLink="/orders/get/{{id}}" class="card-title btn btn-info">View</a>
+  </div>
+</div>
