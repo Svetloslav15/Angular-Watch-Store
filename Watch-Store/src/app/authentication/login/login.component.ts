@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, NgForm} from "@angular/forms";
 import {AuthService} from "../auth.service";
 import {Router} from "@angular/router";
-import {ToastrService} from "ngx-toastr";
+import {ToastContainerDirective, ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-login',
@@ -10,10 +10,11 @@ import {ToastrService} from "ngx-toastr";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  @ViewChild('form') form: NgForm;
+  @ViewChild(ToastContainerDirective) toastContainer: ToastContainerDirective;
   constructor(private fb: FormBuilder,
               private authService: AuthService,
-              private router: Router) { }
+              private router: Router,
+              private toastr: ToastrService) { }
 
   ngOnInit() {
   }

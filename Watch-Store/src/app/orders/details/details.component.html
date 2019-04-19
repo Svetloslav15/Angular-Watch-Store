@@ -1,0 +1,23 @@
+<main className="container">
+  <div  id='order-container'>
+    <div className="col-lg-12 py-4">
+      <h3 class="p-2">Costumer: {{order.userId.username}}</h3>
+      <h3 class="p-3">All Price: {{order.price}}</h3>
+    </div>
+    <div class="table table-hover table-condensed">
+      <div>
+        <div class="w-100 row my-4">
+          <div class="w-75 text-center">Watch</div>
+          <div class="w-25 text-center">Price</div>
+        </div>
+      </div>
+      <div>
+        <app-order-watch *ngFor="let watch of order.watches"
+        name="{{watch.name}}"
+        imageUrl="{{watch.imageUrl}}"
+        price="{{watch.price}}">
+        </app-order-watch>
+      </div>
+    </div>
+  </div >
+</main>

@@ -23,7 +23,6 @@ export class CreateWatchComponent implements OnInit {
   createWatch() {
     this.watchService.createWatch(this.form.value)
       .subscribe((data) => {
-        console.log(data);
         this.form.reset();
       })
   }

@@ -9,10 +9,13 @@
     <h5 class="card-title">{{price}}</h5>
   </div>
   <div class="card-body col-lg-2">
-    <h5 *ngIf="isPending" class="card-title btn btn-outline-warning">Pending</h5>
-    <h5 *ngIf="isArchived" class="card-title btn btn-outline-danger">Archived</h5>
+    <h5 *ngIf="isPending=='true'" class="card-title btn btn-outline-warning">Pending</h5>
+    <h5  *ngIf="isArchived=='true'" class="card-title btn btn-outline-danger">Archived</h5>
   </div>
+
   <div class="card-body col-lg-2">
-    <a routerLink="/orders/get/{{_id}}" class="card-title btn btn-info">View</a>
+    <a routerLink="/orders/get/{{id}}" class="card-title btn btn-info">View</a>
+    <a *ngIf="isPending=='true' && isAdmin()" (click)="orderService.archiveOrder(id)" class="card-title btn btn-danger">Archive Order</a>
+    <a *ngIf="isArchived=='true' && isAdmin()" (click)="orderService.pendOrder(id)" class="card-title btn btn-warning">Pend Order</a>
   </div>
 </div>

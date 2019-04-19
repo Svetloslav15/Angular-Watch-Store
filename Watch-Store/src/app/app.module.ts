@@ -12,7 +12,7 @@ import {RegisterComponent} from './authentication/register/register.component';
 import {LoginComponent} from './authentication/login/login.component';
 import {AuthService} from "./authentication/auth.service";
 import {JwtInterceptorService} from "./jwt-interceptor.service";
-import {ToastrModule} from "ngx-toastr";
+import {ToastContainerModule, ToastrModule} from "ngx-toastr";
 import { WatchComponent } from './home/watch/watch.component';
 import { WatchesAllComponent } from './watches/watches-all/watches-all.component';
 import { CartComponent } from './watches/cart/cart.component';
@@ -23,6 +23,12 @@ import { FavouriteWatchComponent } from './watches/favourite/favourite-watch/fav
 import { MyordersComponent } from './orders/myorders/myorders.component';
 import { OrderCommonComponent } from './orders/order-common/order-common.component';
 import { CreateWatchComponent } from './watches/create-watch/create-watch.component';
+import { PendingComponent } from './orders/pending/pending.component';
+import { ArchivedComponent } from './orders/archived/archived.component';
+import { DetailsComponent } from './orders/details/details.component';
+import { OrderWatchComponent } from './orders/order-watch/order-watch.component';
+import { EditComponent } from './watches/edit/edit.component';
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -41,7 +47,12 @@ import { CreateWatchComponent } from './watches/create-watch/create-watch.compon
     FavouriteWatchComponent,
     MyordersComponent,
     OrderCommonComponent,
-    CreateWatchComponent
+    CreateWatchComponent,
+    PendingComponent,
+    ArchivedComponent,
+    DetailsComponent,
+    OrderWatchComponent,
+    EditComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +60,13 @@ import { CreateWatchComponent } from './watches/create-watch/create-watch.compon
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
-    ToastrModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      timeOut: 5000,
+      positionClass: 'toast-top-right',
+      preventDuplicates: true,
+    }),
+    ToastContainerModule
   ],
   providers: [AuthService,
     {

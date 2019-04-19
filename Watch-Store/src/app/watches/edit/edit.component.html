@@ -1,7 +1,7 @@
 <main>
   <section class="jumbotron text-dark text-center m-4">
-    <h2 class="ml-5">Add Watch</h2>
-    <form  class="ml-5 text-center" #form="ngForm" (ngSubmit)="createWatch()">
+    <h2 class="ml-5">Edit Watch</h2>
+    <form  class="ml-5 text-center" #form="ngForm" (ngSubmit)="editWatch()">
       <div class="form-group col-md-4 m-md-auto demo">
         <label for="exampleInputUsername">Name:</label>
         <div class="input-group-prepend">
@@ -12,7 +12,8 @@
                  #name="ngModel"
                  name="name"
                  id="exampleInputUsername"
-                 placeholder="Name"/>
+                 placeholder="Name"
+            value="{{watch.name}}"/>
         </div>
         <div *ngIf="name.touched && name.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
       </div>
@@ -24,7 +25,8 @@
                     ngModel
                     #description="ngModel"
                     name="description"
-                    placeholder="Description"></textarea>
+                    placeholder="Description"
+                    value="{{watch.description}}"></textarea>
         </div>
         <div *ngIf="description.touched && description.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
       </div>
@@ -36,7 +38,8 @@
                  #imageUrl="ngModel"
                  class="form-control"
                  name="imageUrl"
-                 placeholder="Image URL"/>
+                 placeholder="Image URL"
+                 value="{{watch.imageUrl}}"/>
         </div>
         <div *ngIf="imageUrl.touched && imageUrl.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
       </div>
@@ -45,7 +48,12 @@
         <div class="input-group-prepend">
           <input type="number" required
                  ngModel
-                 #price="ngModel" min="1"  class="form-control" name="price" placeholder="Price"/>
+                 #price="ngModel"
+                 min="1"
+                 class="form-control"
+                 name="price"
+                 placeholder="Price"
+                 value="{{watch.price}}"/>
         </div>
         <div *ngIf="price.touched && price.errors?.required" class="alert alert-danger mt-1">Field is required!</div>
       </div>

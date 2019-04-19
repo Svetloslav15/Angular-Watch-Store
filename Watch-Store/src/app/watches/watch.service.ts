@@ -8,6 +8,7 @@ const getTopThreeUrl = 'http://localhost:3000/watches/get/best/3';
 const getWatch = 'http://localhost:3000/watches/get';
 const deleteWatchById = 'http://localhost:3000/watches/delete';
 const createWatchUrl = 'http://localhost:3000/watches/create';
+const editWatchUrl = 'http://localhost:3000/watches/edit/';
 
 @Injectable({
   providedIn: 'root'
@@ -104,6 +105,10 @@ export class WatchService {
 
   createWatch(data) {
     return this.http.post(createWatchUrl, data);
+  }
+
+  editWatch(id, data){
+    return this.http.post(editWatchUrl + id, data);
   }
 
   navigateToDetails(id) {

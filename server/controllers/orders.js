@@ -41,7 +41,6 @@ module.exports = {
     },
     archiveOrderServer: (req, res) => {
         let orderId = req.params.id;
-        console.log('hey');
 
         let isPending = false;
         let isArchived = true;
@@ -50,7 +49,6 @@ module.exports = {
                 isPending, isArchived
             }
         }).then((data) => {
-            console.log(data);
             res.status(200).json({
                 data: data,
                 message: "Successfully make order Pending!"
@@ -63,7 +61,6 @@ module.exports = {
     },
     makePendingServer: (req, res) => {
         let orderId = req.params.id;
-        console.log('hi');
         let isPending = true;
         let isArchived = false;
         Order.findByIdAndUpdate(orderId, {
@@ -82,6 +79,7 @@ module.exports = {
     },
     listMyOrders: (req, res) => {
         let myId = req.params.id;
+        console.log(myId);
         Order.find({})
             .populate('watches')
             .then(orders => {

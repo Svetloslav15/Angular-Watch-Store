@@ -2,21 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import {OrderService} from "../order.service";
 
 @Component({
-  selector: 'app-myorders',
-  templateUrl: './myorders.component.html',
-  styleUrls: ['./myorders.component.css']
+  selector: 'app-archived',
+  templateUrl: './archived.component.html',
+  styleUrls: ['./archived.component.css']
 })
-export class MyordersComponent implements OnInit {
+export class ArchivedComponent implements OnInit {
   orders;
-
   constructor(private orderService: OrderService) { }
 
   ngOnInit() {
-    this.orderService.getMine()
+    this.orderService.getArchivedOrders()
       .subscribe((data) => {
         this.orders = data['data'];
-        console.log(data);
-      })
+      });
   }
-
 }
